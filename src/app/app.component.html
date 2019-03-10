@@ -1,0 +1,21 @@
+<div class="container">
+    <ny-ticker>{{move(-5,"hours_ny","minutes_ny","txt_ny")}}</ny-ticker>
+    <london-ticker>{{move(0,"hours_london","minutes_london","txt_london")}}</london-ticker>
+    <kiev-ticker>{{move(2,"hours_kiev","minutes_kiev","txt_kiev")}}</kiev-ticker>
+</div>
+<div  class="container__add">
+    <h1>Додати пояс</h1>
+    <div class="add">
+        <input #inp type="text" name="" value="" list="gmt" autocomplete="off">
+        <datalist  id="gmt">
+        <option *ngFor="let clock of clocks">{{"(GMT "+clock.gmt + " ) " + clock.text}}</option>
+        </datalist>
+        <div class="text__add">GMT</div>
+        <button type="button" name="button" (click)="createNewClock(inp.value)">OK</button>
+    </div>
+    <div id="newClock">
+    <app-ticker [nameCity]=getCityname>{{move(getgmtvalue,"clock","minutes","txt")}}</app-ticker>
+    </div>
+</div>
+
+<router-outlet></router-outlet>
